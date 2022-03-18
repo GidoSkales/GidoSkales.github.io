@@ -179,3 +179,12 @@ form p {
 .lt {
   cursor: pointer;
 }
+
+@media (max-width: 500px) {
+  body {
+    padding: 0.5rem;
+  }
+  .displayBalance {
+    border-radius: 10px;
+  }
+}
