@@ -172,3 +172,10 @@ form p {
 .desc input {
   padding: 10px;
 }
+.overlay {
+  display: none;
+}
+
+.lt {
+  cursor: pointer;
+}
