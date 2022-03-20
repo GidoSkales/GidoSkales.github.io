@@ -31,7 +31,7 @@ body {
   max-width: 400px;
   background: var(--white);
   border-radius: 20px;
-  height: 700px;
+  height: auto;
 }
 /* Dashboard */
 .dash__view,
@@ -83,12 +83,7 @@ body {
   height: 30px;
   border-radius: 50%;
 }
-/* Bottom Icon */
-.addIcon {
-  position: absolute;
-  bottom: 10%;
-  left: 60%;
-}
+
 .addToList {
   background: var(--dark);
   border: none;
@@ -106,6 +101,7 @@ body {
 
 /* Overlay */
 
+/* Overlay Forms and navigations */
 .nav {
   display: flex;
   align-items: center;
@@ -147,44 +143,44 @@ form p {
   padding: 10px 0;
 }
 
-.numbers {
-  padding: 10px;
-}
-.num__tile {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 10px;
-}
-.num__tile button {
-  padding: 10px;
-  height: 60px;
-  width: 60px;
-  text-align: center;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  font-weight: bolder;
-  font-size: 30px;
-  background: var(--white);
-}
-
 .desc input {
   padding: 10px;
 }
+
+/* Overlay Numbers */
+.login__section {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 28px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  text-align: center;
+}
+.login-text__key {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  background: rgba(0, 0, 0, 0.034);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-text__key:active {
+  background: rgba(0, 0, 0, 0.25);
+}
+
 .overlay {
   display: none;
 }
 
-.lt {
-  cursor: pointer;
-}
-
-@media (max-width: 500px) {
-  body {
-    padding: 0.5rem;
-  }
-  .displayBalance {
-    border-radius: 10px;
-  }
+/* Bottom Icon */
+.addIcon {
+  /* left: 60%; */
 }
