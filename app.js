@@ -1,47 +1,90 @@
-const init = window.location.href;
-const addToList = document.querySelector(".addToList");
-const containerApp = document.querySelector(".containerApp");
+"use strict";
+
+const expenses = document.querySelector(".expense__list");
+const updateList = document.querySelector(".send");
+const navToPage = document.querySelector(".lt");
 const overlay = document.querySelector(".overlay");
+const containerApp = document.querySelector(".containerApp");
+const addToBtn = document.querySelector(".addToList");
+let numInput = document.querySelector(".inputNo");
 
-addToList.addEventListener("click", function () {
-  containerApp.style.display = "none";
-  overlay.style.display = "block";
-  const done = document.querySelector(".done");
-  const back = document.querySelector(".lt");
-  back.addEventListener("click", () => {
-    containerApp.style.display = "";
-    overlay.style.display = "none";
-  });
-  done.addEventListener("click", function () {
-    const descriptionInput = document.querySelector(".desc input");
-    const amount = document.querySelector("form input");
-    const insertHtml = ` <div class="expense__tile">
-      <p><i class="fa-solid fa-gift"></i></p>
-      <div class="item__description">
-        <h3>${
-          descriptionInput.value ? descriptionInput.value : "No description"
-        }</h3>
-        <p>with Peter Bower</p>
-      </div>
-  
-      <p class="money">$${amount.value ? amount.value : 0}.00</p>
-      </div>`;
-    // Calc Values
-    function calc() {
-      const allInputs = [document.querySelectorAll(".money")];
-
-      const render = document.querySelector(".amount span");
-      render.textContent = allInputs.reduce((acc, el) => {
-        Math.abs(el.value) + acc;
-        console.log(el.value);
-      }, 0);
+function renderNumbers() {
+  const Pad = function ({ el, keys }) {
+    {
+      keys.forEach((key) => {
+        if (isNaN(Number(key.textContent))) return;
+        else {
+          key.addEventListener("click", function () {
+            el.querySelector(".inputNo").value += Number(key.textContent);
+          });
+        }
+      });
     }
-    calc();
 
-    document
-      .querySelector(".expense__list")
-      .insertAdjacentHTML("beforeend", insertHtml);
-    containerApp.style.display = "";
+    {
+      keys.forEach((key) => {
+        if (key.textContent.toLowerCase() === "x") {
+          key.addEventListener("click", function () {
+            el.querySelector(".inputNo").value = el
+              .querySelector(".inputNo")
+              .value.substring(
+                0,
+                el.querySelector(".inputNo").value.length - 1
+              );
+          });
+        }
+      });
+    }
+  };
+  Pad({
+    el: document.querySelector(".overlay"),
+    keys: document.querySelectorAll(".login-text__key"),
+  });
+}
+renderNumbers();
+
+function changeLayer() {
+  addToBtn.addEventListener("click", function () {
+    containerApp.style.display = "none";
+    overlay.style.display = "block";
+  });
+  navToPage.addEventListener("click", function () {
+    containerApp.style.display = "block";
     overlay.style.display = "none";
   });
-});
+  updateList.addEventListener("click", function () {
+    containerApp.style.display = "block";
+    overlay.style.display = "none";
+  });
+}
+changeLayer();
+
+function processData() {
+  updateList.addEventListener("click", function () {
+    let itemDesc = document.querySelector(".desc input").value;
+    const insertHtml = `
+  <div class="expense__tile">
+  <p><i class="fa-solid fa-gift"></i></p>
+  <div class="item__description">
+  <h3>${itemDesc}</h3>
+  <p>with Peter Bower</p>
+  </div>
+  <p>$<span class="money">${numInput.value}</span> .00</p>
+  </div>`;
+    expenses.insertAdjacentHTML("beforeend", insertHtml);
+    function parseBalance() {
+      if (document.querySelectorAll(".expense__tile").length > 1) {
+        try {
+          document.getElementById("unq").textContent = [
+            ...document.querySelectorAll(".money"),
+          ].reduce((acc, item) => acc + Number(item.textContent), 0);
+        } catch (error) {
+          console.log("One input is invalid");
+        }
+      }
+      document.querySelector(".desc input").value = numInput.value = "";
+    }
+    parseBalance();
+  });
+}
+processData();

@@ -16,6 +16,11 @@
       src="https://kit.fontawesome.com/4fb35b1106.js"
       crossorigin="anonymous"
     ></script>
+    <!-- Google material icons -->
+     <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  /> 
   </head>
   <body>
     <!-- Container App -->
@@ -29,8 +34,8 @@
           </div>
         </div>
         <div class="displayBalance">
-          <h3 class="amount" style="font-size: 29px">
-            <span style="font-size: 22px">$</span> 17,800
+          <h3 class="amount" style="font-size: 29px">$
+            <span style="font-size: 22px" id="unq">17,800</span>
           </h3>
           <span class="currency" style="opacity: 70%">USD</span>
         </div>
@@ -43,19 +48,23 @@
         </div>
         <div class="view__btn"><button class="btn-view">View All</button></div>
       </div>
+
+
       <div class="expense__list">
         <p class="day">Today</p>
-        <div class="expense__tile">
+        <div class="expense__tile" style="opacity: 40%;">
           <p><i class="fa-solid fa-gift"></i></p>
           <div class="item__description">
             <h3>Coffee</h3>
             <p>with Peter Bower</p>
           </div>
     
-          <p class="money">$50.00</p>
+          <p>$<span >50</span> .00</p>
         </div>
       </div>
     
+
+
       <div class="addIcon">
         <button class="addToList"><i>+</i></button>
       </div>
@@ -74,41 +83,32 @@
     
       <form>
         <p>Amount</p>
-        <input type="number" class="inputNo" placeholder="$ 50" />
+        <input type="number" class="inputNo" placeholder="$ 50" readonly style="user-select: none;"/>
       </form>
     
       <div class="desc">
-        <input type="text" placeholder="description (optional) " />
+        <input class="myDisp" type="text" placeholder="description (optional)"/>
       </div>
     
       <br />
       <br />
     
-      <div class="numbers">
-        <div class="num__tile">
-          <button class="num">1</button>
-          <button class="num">2</button>
-          <button class="num">3</button>
+      <div class="login__section">
+        <div class="numPad">
+          <div class="login-text__key">1</div>
+          <div class="login-text__key">2</div>
+          <div class="login-text__key">3</div>
+          <div class="login-text__key">4</div>
+          <div class="login-text__key">5</div>
+          <div class="login-text__key">6</div>
+          <div class="login-text__key">7</div>
+          <div class="login-text__key">8</div>
+          <div class="login-text__key">9</div>
+          <div class="login-text__key del">X</div>
+          <div class="login-text__key">0</div>
+          <div class="login-text__key send">--></div>
         </div>
-        <div class="num__tile">
-          <button class="num">4</button>
-          <button class="num">5</button>
-          <button class="num">6</button>
-        </div>
-        <div class="num__tile">
-          <button class="num">7</button>
-          <button class="num">8</button>
-          <button class="num">9</button>
-        </div>
-        <div class="num__tile">
-          <button class="delNum">
-            <i class="fa-solid fa-delete-left"></i>
-          </button>
-          <button class="num">0</button>
-          <button class="done">
-            <i class="fa-regular fa-circle-check"></i>
-          </button>
-        </div>
+      
       </div>
       <br />
       <br />
@@ -118,6 +118,7 @@
       <hr />
     </div>
     <!-- End of overlay -->
+    <!-- <script src="app.js"></script> -->
     <script src="app.js"></script>
   </body>
 </html>
