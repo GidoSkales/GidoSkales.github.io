@@ -12,7 +12,7 @@ function renderNumbers() {
   const Pad = function ({ el, keys }) {
     {
       keys.forEach((key) => {
-        if (isNaN(Number(key.textContent))) return;
+        if (!Number(key.textContent)) return;
         else {
           key.addEventListener("click", function () {
             el.querySelector(".inputNo").value += Number(key.textContent);
@@ -22,17 +22,10 @@ function renderNumbers() {
     }
 
     {
-      keys.forEach((key) => {
-        if (key.textContent.toLowerCase() === "x") {
-          key.addEventListener("click", function () {
-            el.querySelector(".inputNo").value = el
-              .querySelector(".inputNo")
-              .value.substring(
-                0,
-                el.querySelector(".inputNo").value.length - 1
-              );
-          });
-        }
+      document.querySelector(".del").addEventListener("click", function () {
+        el.querySelector(".inputNo").value = el
+          .querySelector(".inputNo")
+          .value.substring(0, el.querySelector(".inputNo").value.length - 1);
       });
     }
   };
@@ -41,12 +34,14 @@ function renderNumbers() {
     keys: document.querySelectorAll(".login-text__key"),
   });
 }
+
 renderNumbers();
 
 function changeLayer() {
   addToBtn.addEventListener("click", function () {
     containerApp.style.display = "none";
     overlay.style.display = "block";
+    document.querySelector(".desc input").focus();
   });
   navToPage.addEventListener("click", function () {
     containerApp.style.display = "block";
@@ -66,7 +61,7 @@ function processData() {
   <div class="expense__tile">
   <p><i class="fa-solid fa-gift"></i></p>
   <div class="item__description">
-  <h3>${itemDesc}</h3>
+  <h3>${itemDesc ? itemDesc : "No Description"}</h3>
   <p>with Peter Bower</p>
   </div>
   <p>$<span class="money">${numInput.value}</span> .00</p>
