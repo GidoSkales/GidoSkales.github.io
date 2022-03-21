@@ -184,3 +184,12 @@ form p {
 .addIcon {
   /* left: 60%; */
 }
+
+@media (max-width: 500px) {
+  body {
+    padding: 0.5rem;
+  }
+  .login__section {
+    padding: 0px;
+  }
+}
