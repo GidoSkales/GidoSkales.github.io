@@ -171,5 +171,9 @@ form p {
 .addIcon {
     /* left: 60%; */
 }
-
+@media (min-width: 452px) {
+  .login__section {
+    padding: 20px;
+  }
 }
+
